@@ -1,0 +1,17 @@
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<!--@subject Contact Form@-->
+<!--@vars {
+"var data.question":"Question",
+"var data.email":"Sender Email",
+"var data.name":"Sender Name"
+} @-->
+
+{{trans "Name: %name" name=$data.name}}
+{{trans "Email: %email" email=$data.email}}
+
+{{trans "Question: %question" comment=$data.question}}

@@ -1,0 +1,15 @@
+<?php
+/* @var \Perficient\Faqs\Block\FaqsForm $block */
+
+$data  = $block->getAllFaqs();
+
+foreach($data as $dataCollection){
+    if(!($dataCollection->getAnswer() == null)){
+        echo  "Question : " .$dataCollection->getQuestion();
+        echo "</br>";
+        echo  "Answer : " .$dataCollection->getAnswer();
+    }
+    echo "</br>";
+}
+
+?>

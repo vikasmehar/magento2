@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Perficient. All rights reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../Backend/etc/menu.xsd">
+    <menu>
+        <add id="Perficient_Banner::perficient_banner_index" title="Banner" module="Perficient_Banner" parent="" sortOrder="20" dependsOnModule="Perficient_Banner" action="banner/banner/index" resource="Perficient_Banner::perficient_banner_index"/>
+<!--AddMenu-->
+    </menu>
+</config>

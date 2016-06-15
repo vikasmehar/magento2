@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+     <update handle="editor"/>
+    <body>
+	   <referenceContainer name="content">
+            <block class="Perficient\Bannerslider\Block\Adminhtml\Bannerslider\Edit" name="bannerslider_bannerslider_edit"/>
+        </referenceContainer>
+		 <referenceContainer name="left">
+            <block class="Perficient\Bannerslider\Block\Adminhtml\Bannerslider\Edit\Tabs" name="bannerslider_bannerslider_edit_tabs">
+				<block class="Perficient\Bannerslider\Block\Adminhtml\Bannerslider\Edit\Tab\General" name="bannerslider_bannerslider_edit_tab_general"/>
+				 <action method="addTab">
+                    <argument name="name" xsi:type="string">general_section</argument>
+                    <argument name="block" xsi:type="string">bannerslider_bannerslider_edit_tab_general</argument>
+                </action>
+				<block class="Perficient\Bannerslider\Block\Adminhtml\Bannerslider\Edit\Tab\Description" name="bannerslider_bannerslider_edit_tab_description"/>
+				 <action method="addTab">
+                    <argument name="name" xsi:type="string">description_section</argument>
+                    <argument name="block" xsi:type="string">bannerslider_bannerslider_edit_tab_description</argument>
+                </action>
+				<!--CedAddTab-->
+			</block>
+        </referenceContainer>
+    </body>
+</page>

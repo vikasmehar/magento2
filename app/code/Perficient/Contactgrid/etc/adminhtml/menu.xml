@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Perficient. All rights reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../Backend/etc/menu.xsd">
+    <menu>
+        <add id="Perficient_Contactgrid::perficient_gridindex_index" title="Contact Grid" module="Perficient_Contactgrid" parent="" sortOrder="20" dependsOnModule="Perficient_Contactgrid" action="contactgrid/gridindex/index" resource="Perficient_Contactgrid::perficient_gridindex_index"/>
+<!--AddMenu-->
+    </menu>
+</config>

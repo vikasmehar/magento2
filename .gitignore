@@ -1,0 +1,6 @@
+/pub/static/*
+!/pub/static/.htaccess
+
+/var/*
+!/var/.htaccess
+/pub

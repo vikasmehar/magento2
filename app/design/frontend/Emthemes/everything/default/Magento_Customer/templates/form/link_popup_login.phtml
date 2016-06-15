@@ -1,0 +1,171 @@
+<style>
+    .ac_results {
+        padding: 0px;
+        border: 1px solid black;
+        background-color: white;
+        overflow: hidden;
+        z-index: 99999;
+    }
+
+    .ac_results ul {
+        width: 100%;
+        list-style-position: outside;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .ac_results li {
+        margin: 0px;
+        padding: 2px 5px;
+        cursor: default;
+        display: block;
+        /*
+        if width will be 100% horizontal scrollbar will apear
+        when scroll mode will be used
+        */
+        /*width: 100%;*/
+        font: menu;
+        font-size: 12px;
+        /*
+        it is very important, if line-height not setted or setted
+        in relative units scroll will be broken in firefox
+        */
+        line-height: 16px;
+        overflow: hidden;
+    }
+
+    .ac_loading {
+        /*background: white url('../js/indicator.gif') right center no-repeat;*/
+    }
+
+    .ac_odd {
+        background-color: #eee;
+    }
+
+    .ac_over {
+        background-color: #0A246A;
+        color: white;
+    }
+
+</style>
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var \Magento\Customer\Block\Form\Login $block */
+?>
+<?php
+/**
+ * Customer login form template
+ *
+ * @see \Magento\Customer\Block\Form\Login
+ * @var $block \Magento\Customer\Block\Form\Login
+ */
+?>
+<?php $settingHelper = $this->helper('Emthemes\ThemeSettings\Helper\Data'); ?>
+<?php if ($settingHelper->getConfig('general_section/general_blocks/handle_login_form') == 2): ?>
+    <div class="fade popup-login-wrapper" style="display:none">
+        <div class="popup popup">
+            <div class="popup-inner">
+                <div class="popup-content" data-role="content">
+                    <div class="block block-customer-login popup-login" id="link-popup-login">
+                        <div class="block-content" aria-labelledby="block-customer-login-heading">
+                            <form class="form form-login"
+                                  action="<?php /* @escapeNotVerified */
+                                  echo $block->getPostActionUrl() ?>"
+                                  method="post"
+                                  id="popup-login-form"
+                                  data-mage-init='{"validation":{}}'>
+                                <?php echo $block->getBlockHtml('formkey'); ?>
+                                <fieldset class="fieldset login" data-hasrequired="<?php /* @escapeNotVerified */
+                                echo __('* Required Fields') ?>">
+                                    <div class="field email required">
+                                        <label class="label" for="email"><span><?php /* @escapeNotVerified */
+                                                echo __('Email Id') ?></span></label>
+                                        <div class="control">
+                                            <p>
+                                                <input name="login[username]"
+                                                       value="<?php echo $block->escapeHtml($block->getUsername()) ?>" <?php if ($block->isAutocompleteDisabled()) : ?> autocomplete="off"<?php endif; ?>
+                                                       id="party_id" type="email" class="input-text"
+                                                       title="<?php /* @escapeNotVerified */
+                                                       echo __('Email') ?>"
+                                                       data-validate="{required:true, 'validate-email':true}">
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="field password required">
+                                        <label for="pass" class="label"><span><?php /* @escapeNotVerified */
+                                                echo __('Password') ?></span></label>
+                                        <div class="control">
+                                            <input name="login[password]"
+                                                   type="password" <?php if ($block->isAutocompleteDisabled()) : ?> autocomplete="off"<?php endif; ?>
+                                                   class="input-text" id="pass" title="<?php /* @escapeNotVerified */
+                                            echo __('Password') ?>"
+                                                   data-validate="{required:true, 'validate-password':true}">
+                                        </div>
+                                    </div>
+                                    <?php echo $block->getChildHtml('form_additional_info'); ?>
+                                    <div class="actions-toolbar">
+                                        <div class="primary">
+                                            <button type="submit" class="action login primary" name="send" id="send2">
+                                                <span><?php /* @escapeNotVerified */
+                                                    echo __('Login') ?></span></button>
+                                        </div>
+                                        <div class="secondary"><a class="action remind"
+                                                                  href="<?php /* @escapeNotVerified */
+                                                                  echo $block->getForgotPasswordUrl() ?>"><span><?php /* @escapeNotVerified */
+                                                    echo __('Forgot Your Password?') ?></span></a></div>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        require([
+            'jquery',
+            'modal',
+            'domReady!',
+            'Perficient_Ajaxloginsearch/js/jquery.autocomplete'
+        ], function ($) {
+            $('.log-in').click(function () {
+                $('#link-popup-login').modal({
+                    autoOpen: true,
+                    wrapperClass: 'modals-wrapper popup-login',
+                    responsive: true
+                });
+                return false;
+            });
+
+            $(document).ready(function () {
+                $("#party_id").autocomplete("http://localhost/magento2/ajaxlogin/index/index", {
+                    width: 220,
+                    matchContains: true,
+                    mustMatch: true,
+                    selectFirst: false,
+                    focus: function (event, ui) {
+                        console.log(event);
+                    }
+                });
+            });
+
+            $("#party_id").result(function (event, data, formatted) {
+                console.log(data);
+                $("#party_id").val(data[1]);
+            });
+
+        });
+    </script>
+
+<?php endif; ?>
+

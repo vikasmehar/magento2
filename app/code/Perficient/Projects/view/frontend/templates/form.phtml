@@ -1,0 +1,59 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+?>
+<form class="form faqs"
+      action="<?php /* @escapeNotVerified */ echo $block->getFormAction(); ?>"
+      id="projects-form"
+      method="post"
+      data-hasrequired="<?php /* @escapeNotVerified */ echo __('* Required Fields') ?>"
+      data-mage-init='{"validation":{}}'>
+    <fieldset class="fieldset">
+        <legend class="legend"><span><?php /* @escapeNotVerified */ echo __('Add Projects') ?></span></legend><br />
+        <div class="field name required">
+            <label class="label" for="name"><span><?php /* @escapeNotVerified */ echo __('Project Name') ?></span></label>
+            <div class="control">
+                <input name="name" id="name" title="<?php /* @escapeNotVerified */ echo __('Name') ?>" value="<?php echo $block->escapeHtml($this->helper('Magento\Contact\Helper\Data')->getUserName()) ?>" class="input-text" type="text" data-validate="{required:true}"/>
+            </div>
+        </div>
+        <div class="field name required">
+            <label class="label" for="department"><span><?php /* @escapeNotVerified */ echo __('Department') ?></span></label>
+            <div class="control">
+                <input name="department" id="department" title="<?php /* @escapeNotVerified */ echo __('Designation') ?>" value="<?php echo $block->escapeHtml($this->helper('Magento\Contact\Helper\Data')->getUserName()) ?>" class="input-text" type="text" data-validate="{required:true}"/>
+            </div>
+        </div>
+        <?php echo $block->getChildHtml('form.additional.info'); ?>
+    </fieldset>
+    <div class="actions-toolbar">
+        <div class="primary">
+            <button type="submit" title="<?php /* @escapeNotVerified */ echo __('Submit') ?>" class="action submit primary">
+                <span><?php /* @escapeNotVerified */ echo __('Submit') ?></span>
+            </button>
+        </div>
+    </div>
+    <?php $data = $block->getAllProjects(); ?>
+    <br>
+    <fieldset class="fieldset">
+        <legend class="legend"><span><?php /* @escapeNotVerified */ echo __('All Projects') ?></span></legend><br />
+        <table class="email-credentials">
+            <tr>
+                <th>Name</th>
+                <th>Department</th>
+            </tr>
+            <?php
+            foreach($data as $project) {
+                ?>
+                <tr>
+                    <td><?php echo $project['name']; ?></td>
+                    <td><?php echo $project['department']; ?></td>
+                </tr>
+                <?php
+            }
+            ?>
+        </table>
+        <?php echo $block->getChildHtml('form.additional.info'); ?>
+    </fieldset>
+</form>
+

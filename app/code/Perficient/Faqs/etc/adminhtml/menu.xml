@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Perficient_Faqs::faqs" title="Perficient FAQs" module="Perficient_Faqs" sortOrder="20" action="adminfaqs/faqs/" resource="Perficient_Faqs::faqs"/>
+    </menu>
+</config>
